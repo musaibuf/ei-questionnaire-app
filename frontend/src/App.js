@@ -72,7 +72,7 @@ const containerStyles = {
 // --- EI QUESTIONNAIRE DATA ---
 const sections = [
     {
-        title: 'Self-Awareness',
+        title: 'Section I',
         category: 'SA',
         questions: [
           { id: 1, text: "I realise immediately when I lose my temper" },
@@ -88,7 +88,7 @@ const sections = [
         ]
       },
       {
-        title: 'Managing Emotions',
+        title: 'Section II',
         category: 'ME',
         questions: [
           { id: 2, text: "I can 'reframe' bad situations quickly" },
@@ -104,7 +104,7 @@ const sections = [
         ]
       },
       {
-        title: 'Motivating Oneself',
+        title: 'Section III',
         category: 'MO',
         questions: [
           { id: 3, text: "I am able to always motivate myself to do difficult tasks" },
@@ -120,7 +120,7 @@ const sections = [
         ]
       },
       {
-        title: 'Empathy',
+        title: 'Section IV',
         category: 'E',
         questions: [
           { id: 4, text: "I am always able to see things from the other person's viewpoint" },
@@ -136,7 +136,7 @@ const sections = [
         ]
       },
       {
-        title: 'Social Skill',
+        title: 'Section V',
         category: 'SS',
         questions: [
           { id: 5, text: "I am an excellent listener" },
