@@ -19,9 +19,9 @@ const getPdfHtml = (data) => {
   const logoSrc = getLogoBase64();
 
   const getInterpretation = (score) => {
-    if (score >= 35) return { text: 'Area of Strength', color: '#27AE60' }; // Green
-    if (score >= 18) return { text: 'Needs More Consistent Attention', color: '#F39C12' }; // Yellow
-    return { text: 'Needs Improvement', color: '#B31B1B' }; // Red
+    if (score >= 35) return { text: 'Area of Strength', color: '#2ECC71' }; // Green
+    if (score >= 18) return { text: 'Needs More Consistent Attention', color: '#F39C12' }; // Orange
+    return { text: 'Needs Improvement', color: '#E74C3C' }; // Red
   };
 
   const competencyMap = { SA: 'Self-Awareness', ME: 'Managing Emotions', MO: 'Motivating Oneself', E: 'Empathy', SS: 'Social Skill' };
@@ -47,29 +47,30 @@ const getPdfHtml = (data) => {
         .page { padding: 40px 50px; max-width: 800px; margin: 0 auto; }
         .page-break { page-break-before: always; }
         .header { text-align: center; margin-bottom: 20px; }
-        .header img.logo { max-height: 60px; margin-bottom: 15px; }
-        .header h1 { font-size: 28px; color: #B31B1B; margin: 0; font-weight: 700; }
-        .header h2 { font-size: 24px; color: #B31B1B; margin-bottom: 25px; }
-        .header p { font-size: 16px; color: #7f8c8d; margin-top: 5px; }
-        .underline { border-bottom: 2px solid #F57C00; width: 100%; margin: 20px 0; }
-        .user-info p { font-size: 16px; line-height: 1.6; margin: 4px 0; }
+        .header img.logo { max-height: 40px; margin-bottom: 20px; }
+        .header h1 { font-size: 26px; color: #E74C3C; margin: 0; font-weight: 700; }
+        .header h2 { font-size: 22px; color: #E74C3C; margin-bottom: 25px; }
+        .header p { font-size: 14px; color: #7f8c8d; margin-top: 5px; }
+        .underline { border-bottom: 1.5px solid #F39C12; width: 100%; margin: 20px 0; }
+        .user-info { font-size: 14px; line-height: 1.6; }
         .user-info span { font-weight: 700; display: inline-block; width: 110px; }
-        .chart-container { text-align: center; margin: 30px 0; }
-        .chart-container img { max-width: 90%; height: auto; }
-        .chart-caption { text-align: center; font-size: 14px; color: #7f8c8d; margin-top: 10px; }
+        .chart-container { text-align: center; margin: 40px 0; }
+        .chart-container img { max-width: 100%; height: auto; }
+        .chart-caption { text-align: center; font-size: 12px; color: #7f8c8d; margin-top: 10px; padding: 0 40px; }
         
-        .summary-section { background-color: #f9f9f9; padding: 20px; border-radius: 8px; margin-bottom: 20px; }
-        .summary-section h3 { margin: 0 0 15px; font-size: 20px; color: #34495e; }
+        .summary-section { background-color: #f8f9fa; padding: 20px; border-radius: 8px; margin-bottom: 25px; }
+        .summary-section h3 { margin: 0 0 15px; font-size: 18px; color: #34495e; }
+        .summary-section p { margin: 5px 0; font-size: 14px; }
         
-        .score-card { background-color: #f9f9f9; padding: 15px; margin-bottom: 10px; border-left: 5px solid; border-radius: 5px; }
-        .score-card h4 { margin: 0 0 5px; font-size: 18px; color: #B31B1B; }
+        .score-card { background-color: #ffffff; padding: 15px; margin-bottom: 10px; border-left: 5px solid; border-radius: 5px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        .score-card h4 { margin: 0 0 5px; font-size: 16px; color: #E74C3C; }
         .score-card p { margin: 0; font-size: 14px; }
 
-        .understanding-card { background-color: #f9f9f9; padding: 15px; margin-bottom: 15px; border-left: 5px solid; border-radius: 5px; }
+        .understanding-card { background-color: #f8f9fa; padding: 15px; margin-bottom: 15px; border-left: 5px solid; border-radius: 5px; }
         .understanding-card h4 { margin: 0 0 8px; font-size: 16px; }
         .understanding-card p { margin: 0; font-size: 14px; line-height: 1.5; }
 
-        .next-steps-section h4 { color: #B31B1B; font-size: 16px; margin-top: 20px; margin-bottom: 8px; }
+        .next-steps-section h4 { color: #E74C3C; font-size: 16px; margin-top: 20px; margin-bottom: 8px; }
         .next-steps-section p { font-size: 14px; line-height: 1.6; margin-top: 0; }
         .footer-contact { text-align: center; margin-top: 40px; font-size: 14px; color: #7f8c8d; }
       </style>
@@ -84,9 +85,11 @@ const getPdfHtml = (data) => {
         </div>
         <div class="underline"></div>
         <div class="user-info">
-          <p><span>Name:</span> ${name}</p>
-          <p><span>Organization:</span> ${organization}</p>
-          <p><span>Date:</span> ${date}</p>
+          <table>
+            <tr><td style="width: 120px; font-weight: 700;">Name:</td><td>${name}</td></tr>
+            <tr><td style="width: 120px; font-weight: 700;">Organization:</td><td>${organization}</td></tr>
+            <tr><td style="width: 120px; font-weight: 700;">Date:</td><td>${date}</td></tr>
+          </table>
         </div>
         <div class="chart-container"><img src="${chartImage}" alt="EI Profile Chart"></div>
         <p class="chart-caption">This chart visualizes your scores across the five key areas, showing your unique emotional intelligence profile at a glance.</p>
@@ -112,16 +115,16 @@ const getPdfHtml = (data) => {
       <div class="page page-break">
         <div class="header"><h2>Understanding Your Scores</h2></div>
         <p style="text-align: center; margin-bottom: 25px;">Higher overall scores reflect stronger emotional intelligence. The breakdown below explains what the score for each section means.</p>
-        <div class="understanding-card" style="border-color: #27AE60;">
-          <h4 style="color: #27AE60;">Area of Strength (35-50)</h4>
+        <div class="understanding-card" style="border-color: #2ECC71;">
+          <h4 style="color: #2ECC71;">Area of Strength (35-50)</h4>
           <p>Indicates areas of strength or potential strength. You are likely confident and effective in these aspects of emotional intelligence.</p>
         </div>
         <div class="understanding-card" style="border-color: #F39C12;">
           <h4 style="color: #F39C12;">Needs More Consistent Attention (18-34)</h4>
           <p>Indicates areas that are generally okay but could be more consistent. Focusing here can turn a moderate skill into a strong one.</p>
         </div>
-        <div class="understanding-card" style="border-color: #B31B1B;">
-          <h4 style="color: #B31B1B;">Needs Improvement (10-17)</h4>
+        <div class="understanding-card" style="border-color: #E74C3C;">
+          <h4 style="color: #E74C3C;">Needs Improvement (10-17)</h4>
           <p>Indicates areas of communication that would benefit most from focused development and practice.</p>
         </div>
       </div>
