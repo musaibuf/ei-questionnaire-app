@@ -370,7 +370,7 @@ function App() {
 
     const competencyMap = { SA: 'Self-Awareness', ME: 'Managing Emotions', MO: 'Motivating Oneself', E: 'Empathy', SS: 'Social Skill' };
     
-    const chartOrder = ['SA', 'E', 'MO', 'ME', 'SS'];
+    const chartOrder = ['MO', 'E', 'SA', 'ME', 'SS'];
     const reorderedScores = chartOrder.map(key => results[key]);
     const reorderedLabels = chartOrder.map(key => competencyMap[key]);
 
